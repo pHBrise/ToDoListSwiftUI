@@ -1,20 +1,16 @@
 //
-//  ToDoListTests.swift
-//  ToDoListTests
+//  Untitled.swift
+//  ToDoList
 //
-//  Created by Phanvit Chevamongkolnimit on 15/3/2568 BE.
+//  Created by Phanvit Chevamongkolnimit on 21/3/2568 BE.
 //
 
 import Testing
 import Foundation
-
 @testable import ToDoList
 
-struct ToDoListTests {
-    
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    }
+
+struct TaskViewModelTests {
     var mockDataManager: MockTaskDataManager!
     var viewModel: TaskViewModel!
     

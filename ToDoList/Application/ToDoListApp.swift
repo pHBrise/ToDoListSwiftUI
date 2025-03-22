@@ -10,9 +10,10 @@ import SwiftData
 
 @main
 struct ToDoListApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Task.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -24,9 +25,17 @@ struct ToDoListApp: App {
     }()
 
     var body: some Scene {
+        let taskDataManager = RealTaskDataManager(modelContext: sharedModelContainer.mainContext)
         WindowGroup {
-            ContentView()
+            TaskView(viewModel: TaskViewModel(taskDataManager: taskDataManager))
         }
         .modelContainer(sharedModelContainer)
     }
+}
+
+#Preview {
+    let mockDataManager = PreviewTaskDataManager()
+    let viewModel = TaskViewModel(taskDataManager: mockDataManager)
+    
+    return TaskView(viewModel: viewModel)
 }
